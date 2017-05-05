@@ -1,6 +1,6 @@
 import { TabNavigator } from 'react-navigation'
 
-import { Main, User } from './src'
+import { Main, User } from './components'
 import { styles } from './styles'
 
 const App = TabNavigator(
