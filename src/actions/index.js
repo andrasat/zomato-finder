@@ -11,6 +11,15 @@ export const fetchRestFail = error => ({
   error
 })
 
+export const registerUserSuccess = () => ({
+  type: types.REGISTER_USER_SUCCESS
+})
+
+export const registerUserFail = error => ({
+  type: types.REGISTER_USER_FAIL,
+  error
+})
+
 export const fetchRest = (city, query) => (
   dispatch => (
     fetch('https://developers.zomato.com/api/v2.1/cities?q='+city,
