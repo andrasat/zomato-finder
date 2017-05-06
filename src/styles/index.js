@@ -50,5 +50,9 @@ export const styles = StyleSheet.create({
   },
   touchableHighlight: {
     backgroundColor: secondaryRed
+  },
+  searchBox: {
+    height: 20,
+    borderWidth: StyleSheet.hairlineWidth
   }
 })

@@ -40,20 +40,20 @@ export const fetchUserFail = error => ({
   error
 })
 
-export const addRestSuccess = () => ({
+export const addWishListSuccess = () => ({
   type: types.ADD_RESTAURANT_WISHLIST_SUCCESS
 })
 
-export const addRestFail = error => ({
+export const addWishListFail = error => ({
   type: types.ADD_RESTAURANT_WISHLIST_FAIL,
   error
 })
 
-export const deleteRestSuccess = () => ({
+export const deleteWishListSuccess = () => ({
   type: types.DELETE_RESTAURANT_WISHLIST_SUCCESS
 })
 
-export const deleteRestFail = error => ({
+export const deleteWishListFail = error => ({
   type: types.DELETE_RESTAURANT_WISHLIST_FAIL,
   error
 })
@@ -93,8 +93,8 @@ export const addRestaurant = (restaurant, token) => (
         'Content-Type': 'application/json',
         'token': token
       }
-    }).then(() => dispatch(addRestSuccess()))
-      .catch(err => dispatch(addRestFail(err)))
+    }).then(() => dispatch(addWishListSuccess()))
+      .catch(err => dispatch(addWishListFail(err)))
   )
 )
 
@@ -107,8 +107,8 @@ export const deleteRestaurant = (id, token) => (
         'Content-Type': 'application/json',
         'token': token
       }
-    }).then(() => dispatch(deleteRestSuccess()))
-      .catch(err => dispatch(deleteRestFail(err)))
+    }).then(() => dispatch(deleteWishListSuccess()))
+      .catch(err => dispatch(deleteWishListFail(err)))
   )
 )
 
