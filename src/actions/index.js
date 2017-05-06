@@ -40,6 +40,24 @@ export const fetchUserFail = error => ({
   error
 })
 
+export const addRestSuccess = () => ({
+  type: types.ADD_RESTAURANT_WISHLIST_SUCCESS
+})
+
+export const addRestFail = error => ({
+  type: types.ADD_RESTAURANT_WISHLIST_FAIL,
+  error
+})
+
+export const deleteRestSuccess = () => ({
+  type: types.DELETE_RESTAURANT_WISHLIST_SUCCESS
+})
+
+export const deleteRestFail = error => ({
+  type: types.DELETE_RESTAURANT_WISHLIST_FAIL,
+  error
+})
+
 export const fetchRest = (city, query) => (
   dispatch => (
     fetch('https://developers.zomato.com/api/v2.1/cities?q='+city,
@@ -56,9 +74,47 @@ export const fetchRest = (city, query) => (
   )
 )
 
+export const fetchUser = id => (
+  dispatch => (
+    fetch('https://zomato-finder.herokuapp.com/user/'+id)
+      .then(res => res.json())
+      .then(data => dispatch(fetchUserSuccess(data)))
+      .catch(err => dispatch(fetchUserFail(err)))
+  )
+)
+
+export const addRestaurant = (restaurant, token) => (
+  dispatch => (
+    fetch('https://zomato-finder.herokuapp.com/fav', {
+      method: 'post',
+      body: JSON.stringify(restaurant),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': token
+      }
+    }).then(() => dispatch(addRestSuccess()))
+      .catch(err => dispatch(addRestFail(err)))
+  )
+)
+
+export const deleteRestaurant = (id, token) => (
+  dispatch => (
+    fetch('https://zomato-finder.herokuapp.com/fav/'+id, {
+      method: 'delete',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': token
+      }
+    }).then(() => dispatch(deleteRestSuccess()))
+      .catch(err => dispatch(deleteRestFail(err)))
+  )
+)
+
 export const login = user => (
   dispatch => (
-    fetch('https://zomato-finder.herokuapp.com/login', {
+    fetch('https://zomato-finder.herokuapp.com/user/login', {
       method: 'post',
       body: JSON.stringify(user),
       headers: {
@@ -73,7 +129,7 @@ export const login = user => (
 
 export const register = user => (
   dispatch => (
-    fetch('https://zomato-finder.herokuapp.com/register', {
+    fetch('https://zomato-finder.herokuapp.com/user/register', {
       method: 'post',
       body: JSON.stringify(user),
       headers: {
