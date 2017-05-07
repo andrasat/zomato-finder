@@ -69,7 +69,7 @@ export const fetchRest = (city, query) => (
       { headers: { 'user-key': keys.ZOMATO_API }})
       })
       .then(res => res.json())
-      .then(data => dispatch(fetchRestSuccess(data)))
+      .then(data => dispatch(fetchRestSuccess(data.restaurants)))
       .catch(err => dispatch(fetchRestFail(err)))
   )
 )
