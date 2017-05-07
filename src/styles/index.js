@@ -26,37 +26,6 @@ export const styles = StyleSheet.create({
   header: {
     backgroundColor: tertiaryRed
   },
-  cardContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: ghostWhite
-  },
-  card: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    maxWidth: '100%',
-    backgroundColor: ghostWhite
-  },
-  cardHead: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'flex-start',
-    backgroundColor: transparentRed,
-  },
-  cardBody: {
-    flex: 2,
-    width: '100%',
-    justifyContent: 'center',
-    backgroundColor: ghostWhite
-  },
-  cardContent: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'space-around',
-    backgroundColor: transparentRed
-  },
   button: {
     backgroundColor: primaryRed
   },
@@ -76,5 +45,15 @@ export const styles = StyleSheet.create({
     paddingTop: '55%',
     marginBottom: '5%',
     height: 100
+  },
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    height: 375,
+    width: 400,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
   }
 })
