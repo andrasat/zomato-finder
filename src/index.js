@@ -15,7 +15,7 @@ const App = TabNavigator(
     initialRouteName: 'Main',
     tabBarOptions: {
       showIcon: true,
-      activeTintColor: 'rgba(255,52,60,0.6)',
+      activeTintColor: '#FFF',
       style: styles.header
     }
   }

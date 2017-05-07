@@ -1,18 +1,23 @@
 import React from 'react'
-import { View, TextInput } from 'react-native'
+import { View, TextInput, Picker } from 'react-native'
+import { Container } from 'native-base'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { styles } from '../../styles'
+import { fetchRest } from '../../actions'
 
 import RestaurantCard from './RestaurantCard'
 
-export default class Main extends React.Component {
+class Main extends React.Component {
 
   static navigationOptions = {
     tabBarLabel: 'List',
   }
 
   state = {
-    searchKeyword: ''
+    searchKeyword: '',
+    city: 'Jakarta'
   }
 
   updateText = text => {
@@ -21,22 +26,48 @@ export default class Main extends React.Component {
     })
   }
 
+  selectCity = city => {
+    this.setState({
+      city
+    })
+  }
+
   render() {
+    const { city, searchKeyword } = this.state
+    const { fetchRest } = this.props
     return (
-      <View style={styles.container}>
-        <View style={styles.container}>
+      <Container>
+        <View style={styles.searchContainer}>
+          <Picker
+            style={styles.picker}
+            selectedValue={city}
+            onValueChange={city => this.selectCity(city)}>
+            <Picker.Item label="Jakarta" value="Jakarta" />
+            <Picker.Item label="Bandung" value="Bandung" />
+            <Picker.Item label="Bali" value="Bali" />
+          </Picker>
           <TextInput
             style={styles.searchBox}
             autoCapitalize="none"
             autoCorrect={false}
             placeholder="Search.."
+            value={searchKeyword}
             onChange={e => this.updateText(e.nativeEvent.text)}
+            onSubmitEditing={() => fetchRest(city,searchKeyword)}
           />
         </View>
-        <View style={styles.cardContainer}>
-          <RestaurantCard />
-        </View>
-      </View>
+        <RestaurantCard city={city} searchKeyword={searchKeyword}/>
+      </Container>
     )
   }
 }
+
+Main.propTypes = {
+  fetchRest: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchRest: (city,query) => dispatch(fetchRest(city,query))
+})
+
+export default connect(null, mapDispatchToProps)(Main)

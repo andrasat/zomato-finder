@@ -14,6 +14,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: ghostWhite
   },
+  searchContainer: {
+    flexDirection: 'row',
+    margin: 10
+  },
+  loadingText: {
+    textAlign: 'center',
+    fontSize: 20,
+    marginTop: 10
+  },
   header: {
     backgroundColor: tertiaryRed
   },
@@ -32,16 +41,19 @@ export const styles = StyleSheet.create({
   },
   cardHead: {
     flex: 1,
+    width: '100%',
     justifyContent: 'flex-start',
     backgroundColor: transparentRed,
   },
   cardBody: {
     flex: 2,
+    width: '100%',
     justifyContent: 'center',
     backgroundColor: ghostWhite
   },
   cardContent: {
     flex: 1,
+    width: '100%',
     justifyContent: 'space-around',
     backgroundColor: transparentRed
   },
@@ -52,7 +64,17 @@ export const styles = StyleSheet.create({
     backgroundColor: secondaryRed
   },
   searchBox: {
-    height: 20,
-    borderWidth: StyleSheet.hairlineWidth
+    height: 45,
+    flex: 3
+  },
+  picker: {
+    height: 45,
+    flex: 1
+  },
+  loadingIcon: {
+    alignItems: 'center',
+    paddingTop: '55%',
+    marginBottom: '5%',
+    height: 100
   }
 })

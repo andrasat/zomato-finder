@@ -15,9 +15,7 @@ import thunk from 'redux-thunk'
 import App from './src'
 import reducers from './src/reducers'
 
-const middlewares = [thunk, logger]
-
-const store = createStore(reducers, applyMiddleware(middlewares))
+const store = createStore(reducers, applyMiddleware(thunk, logger))
 
 class ZomatoFinder extends React.Component {
   render() {
